@@ -1,0 +1,854 @@
+/* बेसिक रीसेट और फॉन्ट */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+:root {
+  --primary-color: #ff6b6b;
+  --secondary-color: #794afa;
+  --dark-color: #1a1a1a;
+  --light-color: #f8f9fa;
+  --text-color: #333;
+  --text-light: #666;
+  --white: #fff;
+  --black: #000;
+  --gray: #e9ecef;
+  --overlay-color: rgba(0, 0, 0, 0.7);
+  --transition: all 0.3s ease;
+  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--light-color);
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* भाषा स्विचर */
+ /* Language Switcher Styles */
+.language-switcher {
+    width: 10px;
+    position: relative;
+  
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.lang-btn.active {
+    background: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+.lang-btn:hover {
+    background: #070309;
+    color: #e9ecef;
+}
+
+.lang-btn.active:hover {
+    background: #444;
+}
+
+/* Mobile responsive styles */
+
+
+/* Add to your style.css */
+.float-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 999;
+}
+
+.float-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn {
+    background: #25D366;
+}
+
+.call-btn {
+    background: #075E54;
+}
+
+.float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .float-buttons {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+/* हेडर स्टाइल */
+header {
+  background-color: var(--white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-size: 24px;
+}
+
+.logo-text h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.logo-text p {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.mobile-menu-toggle {
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+}
+
+/* नेविगेशन मेनू */
+.main-nav {
+  transition: var(--transition);
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.main-nav ul li a {
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+  color: var(--primary-color);
+}
+
+.main-nav ul li a:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background-color: var(--primary-color);
+  transition: var(--transition);
+}
+
+.main-nav ul li a:hover:after,
+.main-nav ul li a.active:after {
+  width: 100%;
+}
+
+.nav-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  color: var(--white);
+  cursor: pointer;
+  display: none;
+}
+
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay-color);
+  backdrop-filter: blur(5px);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+/* हीरो सेक्शन */
+.hero {
+  height: 100vh;
+  min-height: 600px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('') no-repeat center center/cover;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+/* बटन स्टाइल */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: #ff5252;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+}
+
+/* सेक्शन टाइटल */
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--dark-color);
+}
+
+.section-title:after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: var(--primary-color);
+  margin: 15px auto 0;
+}
+
+/* सेवाएँ सेक्शन */
+.services {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-img {
+  height: 150px;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 50px;
+}
+
+.service-content {
+  padding: 20px;
+}
+
+.service-content h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.service-content p {
+  color: var(--text-light);
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.service-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+/* बुकिंग सेक्शन */
+.booking {
+  padding: 80px 0;
+  background-color: var(--light-color);
+}
+
+.booking-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+.booking-info h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.booking-info p {
+  margin-bottom: 30px;
+  color: var(--text-light);
+}
+
+.booking-info ul {
+  margin-bottom: 30px;
+}
+
+.booking-info ul li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.booking-info ul li i {
+  margin-right: 10px;
+  color: var(--primary-color);
+}
+
+.booking-form {
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.booking-form h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--gray);
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* अबाउट सेक्शन */
+.about {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.about-img {
+  height: 400px;
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: 150px;
+}
+
+.about-content h3 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  margin-bottom: 20px;
+  color: var(--text-light);
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.feature-box {
+  display: flex;
+  align-items: center;
+}
+
+.feature-box i {
+  font-size: 24px;
+  color: var(--primary-color);
+  margin-right: 15px;
+}
+
+.feature-box h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.feature-box p {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+/* गैलरी सेक्शन */
+.gallery {
+  padding: 80px 0;
+  background-color: var(--light-color);
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  height: 250px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: var(--white);
+  transform: translateY(100%);
+  transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay {
+  transform: translateY(0);
+}
+
+.gallery-overlay h3 {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.gallery-overlay p {
+  font-size: 14px;
+}
+
+/* फुटर */
+footer {
+  background-color: var(--dark-color);
+  color: var(--white);
+  padding: 60px 0 0;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.footer-column h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-column h3:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.footer-column p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--white);
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+  padding-left: 5px;
+}
+
+.contact-info {
+  list-style: none;
+}
+
+.contact-info li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.contact-info i {
+  margin-right: 10px;
+  color: var(--primary-color);
+  font-size: 16px;
+  margin-top: 3px;
+}
+
+.contact-info div {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.copyright {
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+/* Add this to your CSS */
+.back-to-top {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: #555;
+  transform: translateY(-3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .back-to-top {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+    left: 15px;
+    bottom: 15px;
+  }
+}
+
+/* रिस्पॉन्सिव स्टाइल */
+@media (max-width: 992px) {
+  .booking-container,
+  .about-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-img {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+  }
+  
+  .logo {
+    margin-bottom: 15px;
+  }
+  
+  .search-box {
+    margin-right: 0;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .search-box input {
+    width: 100%;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--dark-color);
+    z-index: 999;
+    transition: var(--transition);
+  }
+  
+  .main-nav.active {
+    right: 0;
+  }
+  
+  .main-nav ul {
+    flex-direction: column;
+    padding: 80px 30px 30px;
+  }
+  
+  .main-nav ul li a {
+    color: var(--white);
+    padding: 10px 0;
+  }
+  
+  .main-nav ul li a:after {
+    background-color: var(--white);
+  }
+  
+  .nav-close {
+    display: block;
+  }
+  
+  .nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .hero h2 {
+    font-size: 36px;
+  }
+  
+  .section-title {
+    font-size: 30px;
+  }
+  
+  .about-img {
+    height: 250px;
+    font-size: 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero h2 {
+    font-size: 28px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+  }
+  
+  .feature-box {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .feature-box i {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .language-switcher {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .lang-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
